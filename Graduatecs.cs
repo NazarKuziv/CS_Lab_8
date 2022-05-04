@@ -8,27 +8,47 @@ namespace CS_Lab_8
 {
     public class Graduatecs:Student
     {
-        private Student _student;
+        
         private string _thesis_topic;
 
-        public Student get_student() { return this._student; }
+        
         public string get_thesis_topic() { return this._thesis_topic; }
-        public void set_student(Student student) { this._student = student; }
         public void set_thesis_topic(string thesis_topic) { this._thesis_topic = thesis_topic;}
-        public Graduatecs() { this._student = new Student(); this._thesis_topic = " "; }
-        public Graduatecs(Student student, string thesis_topic) { this._student = student; this._thesis_topic = thesis_topic; }
-        public Graduatecs(Graduatecs g) { this._student = g._student;this._thesis_topic=g._thesis_topic; }
+        public Graduatecs() { this.set_name("");this.set_age(0);this.set_kurs(1);this.set_specialty(" "); this._thesis_topic = " "; }
+        public Graduatecs(Student student, string thesis_topic) { this.set_name(student.get_name()); this.set_age(student.get_age()); this.set_kurs(student.get_kurs()); this.set_specialty(student.get_specialty()); this._thesis_topic = thesis_topic; }
+        public Graduatecs(Graduatecs g) { 
+            this.set_name(g.get_name()); 
+            this.set_age(g.get_age());
+            this.set_kurs(g.get_kurs());
+            this.set_specialty(g.get_specialty()); 
+            this._thesis_topic=g._thesis_topic; }
 
         public void Read()
         {
-            this._student.Read();
+            string name;
+            int age;
+            string specialty;
+            int kurs;
+
+            Console.WriteLine(" Name: ");
+            name = Console.ReadLine();
+            this.set_name(name);
+            Console.WriteLine(" Age: ");
+            age = Convert.ToInt32(Console.ReadLine());
+            this.set_age(age);
+            Console.WriteLine(" Specialty: ");
+            specialty = Console.ReadLine();
+            this.set_specialty(specialty);
+            Console.WriteLine(" Age: ");
+            kurs = Convert.ToInt32(Console.ReadLine());
+            this.set_kurs(kurs);
             Console.WriteLine(" Thesis_topic: ");
             this._thesis_topic = Console.ReadLine();
         }
         public void Display()
         {
-            this._student.Display();
-            Console.Write($" Thesis_topic: {this._thesis_topic}\n");
+            
+            Console.Write($" Name: {this.get_name()}\n Age: {this.get_age()}\n Сourse: {this.get_kurs()}\n Specialty: {this.get_specialty()}\n Thesis_topic: {this._thesis_topic}\n");
 
         }
 
